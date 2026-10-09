@@ -14,10 +14,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (!car) return;
         // get input from input class using Getaxis
         // pass update to car script using public methods
-        car.Drive(Input.GetAxis("Vertical"));
-        car.Drive(Input.GetAxis("Horizontal"));
+        car.Drive(Input.GetAxisRaw("Vertical"));
+        car.Drive(Input.GetAxisRaw("Horizontal"));
+        car.Brake(Input.GetKey(KeyCode.LeftShift)? 1f : 0f);
         
     }
 }
